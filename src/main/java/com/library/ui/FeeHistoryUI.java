@@ -58,6 +58,8 @@ public class FeeHistoryUI {
             System.out.printf("    %-28s : $%.2f%n", "Late Fee",          r.getLateFee());
         }
 
+        boolean isReturn = r.getType() == FeeRecord.TransactionType.RETURN;
+        double taxAmount  = isReturn ? 0.0 : r.getTaxAmount();
         System.out.printf("    %-28s : $%.2f%n", "Tax Amount (12% VAT)",  r.getTaxAmount());
         System.out.printf("    %-28s : $%.2f%n", "Total (VAT Inclusive)", r.getTotalVatInclusive());
         System.out.println();
