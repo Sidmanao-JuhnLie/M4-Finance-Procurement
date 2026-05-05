@@ -43,25 +43,25 @@ public class FeeHistoryUI {
     // -----------------------------------------------------------------------
 
     private void printRecord(int index, FeeRecord r) {
-        String typeLabel = r.getType() == FeeRecord.TransactionType.BORROW ? "BORROW" : "RETURN";
+    String typeLabel = r.getType() == FeeRecord.TransactionType.BORROW ? "BORROW" : "RETURN";
 
-        System.out.println("  " + ConsoleUI.DASH_60);
-        System.out.printf("  [%d] %s  |  %s  |  %s%n",
-                index, r.getBookTitle(), typeLabel, r.getTimestamp());
-        System.out.println("  " + ConsoleUI.DASH_60);
-        System.out.printf("    %-28s : $%.2f%n", "Base Price",            r.getBasePrice());
+    System.out.println("  " + ConsoleUI.DASH_60);
+    System.out.printf("  [%d] %s  |  %s  |  %s%n",
+            index, r.getBookTitle(), typeLabel, r.getTimestamp());
+    System.out.println("  " + ConsoleUI.DASH_60);
+    System.out.printf("    %-28s : $%.2f%n", "Base Price",            r.getBasePrice());
 
-        if (r.getReservationFee() > 0) {
-            System.out.printf("    %-28s : $%.2f%n", "Reservation Fee",   r.getReservationFee());
-        }
-        if (r.getLateFee() > 0) {
-            System.out.printf("    %-28s : $%.2f%n", "Late Fee",          r.getLateFee());
-        }
+    if (r.getReservationFee() > 0) {
+        System.out.printf("    %-28s : $%.2f%n", "Reservation Fee",   r.getReservationFee());
+    }
+    if (r.getLateFee() > 0) {
+        System.out.printf("    %-28s : $%.2f%n", "Late Fee",          r.getLateFee());
+    }
 
-        boolean isReturn = r.getType() == FeeRecord.TransactionType.RETURN;
-        double taxAmount  = isReturn ? 0.0 : r.getTaxAmount();
-        System.out.printf("    %-28s : $%.2f%n", "Tax Amount (12% VAT)",  r.getTaxAmount());
-        System.out.printf("    %-28s : $%.2f%n", "Total (VAT Inclusive)", r.getTotalVatInclusive());
-        System.out.println();
+    boolean isReturn = r.getType() == FeeRecord.TransactionType.RETURN;
+    double taxAmount  = isReturn ? 0.0 : r.getTaxAmount();
+    System.out.printf("    %-28s : $%.2f%n", "Tax Amount (12% VAT)",  taxAmount);
+    System.out.printf("    %-28s : $%.2f%n", "Total (VAT Inclusive)", r.getTotalVatInclusive());
+    System.out.println();
     }
 }
